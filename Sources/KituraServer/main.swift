@@ -131,34 +131,30 @@ router.put("/redis/:key") {request, response, next in
     }
 }
 
-// This route accepts PATCH requests
-router.patch("/redis/:key") {request, response, next in
-    response.setHeader("Content-Type", value: "text/plain; charset=utf-8")
-    do {
-        redis.get("apple") { (result: RedisString?, error: NSError?) in
-            if let e = error {
-                print(e.localizedDescription)
-                exit(EXIT_FAILURE)
-            }
-            if let r = result {
-                print(r.asInteger) // asData, asString, asInteger, asDouble
-            } else {
-                print("Not Found")
-            }
-        }
-        try response.status(HttpStatusCode.OK).send("Got a PUT request").end()
-    } catch {
-        Log.error("Failed to send response \(error)")
-    }
-}
-
 // This route accepts DELETE requests
 router.delete("/redis/:key") {request, response, next in
-    response.setHeader("Content-Type", value: "text/plain; charset=utf-8")
-    do {
-        try response.status(HttpStatusCode.OK).send("Got a DELETE request").end()
-    } catch {
-        Log.error("Failed to send response \(error)")
+    Log.debug("DELETE /redis/:key")
+    response.setHeader("Content-Type", value: "application/json; charset=utf-8")
+    if let key = request.params["key"] {
+        Log.debug("key=\(key)")
+        redis.del("apple") { (length: Int?, error: NSError?) in
+            if let l = length where error == nil {
+                Log.debug("Number of keys deleted: \(l)")
+                do {
+                    try response.status(HttpStatusCode.OK).send("\(l)").end()
+                } catch {
+                    Log.error("Failed to send response \(error)")
+                }
+            } else {
+                Log.error("Key not found")
+                response.error = error  ??  NSError(domain: "Redis", code: 1, userInfo: [NSLocalizedDescriptionKey:"Key not found"])
+            }
+            next()
+        }
+    } else {
+        Log.error("Parameters not found")
+        response.error = NSError(domain: "Redis", code: 1, userInfo: [NSLocalizedDescriptionKey:"Parameters not found"])
+        next()
     }
 }
 
