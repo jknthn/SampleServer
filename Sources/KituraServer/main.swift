@@ -137,7 +137,7 @@ router.delete("/redis/:key") {request, response, next in
     response.setHeader("Content-Type", value: "application/json; charset=utf-8")
     if let key = request.params["key"] {
         Log.debug("key=\(key)")
-        redis.del("apple") { (length: Int?, error: NSError?) in
+        redis.del(key) { (length: Int?, error: NSError?) in
             if let l = length where error == nil {
                 Log.debug("Number of keys deleted: \(l)")
                 do {
