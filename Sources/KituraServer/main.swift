@@ -114,7 +114,7 @@ router.put("/redis/:key") {request, response, next in
             if wasSet && error == nil {
                 Log.debug("Set value for a key")
                 do {
-                    try response.status(HttpStatusCode.OK).send(value).end()
+                    try response.status(HttpStatusCode.OK).send("\(wasSet)").end()
                 } catch {
                     Log.error("Failed to send response \(error)")
                 }
