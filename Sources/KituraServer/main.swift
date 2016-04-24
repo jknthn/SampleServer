@@ -105,15 +105,27 @@ router.get("/redis/:key") { request, response, next in
 
 // This route accepts PUT requests
 router.put("/redis/:key") {request, response, next in
+    Log.debug("PUT /redis/:key")
     response.setHeader("Content-Type", value: "application/json; charset=utf-8")
     if let key = request.params["key"],
         let value = request.queryParams["value"] {
-        do {
-            try response.status(HttpStatusCode.OK).send("Hello World, from Kitura!").end()
-        } catch {
-            Log.error("Failed to send response \(error)")
+        Log.debug("key=\(key), value=\(value)")
+        redis.set(key, value: value) { (wasSet: Bool, error: NSError?) in
+            if wasSet && error == nil {
+                Log.debug("Set value for a key")
+                do {
+                    try response.status(HttpStatusCode.OK).send(value).end()
+                } catch {
+                    Log.error("Failed to send response \(error)")
+                }
+            } else {
+                Log.error("Setting key failed")
+                response.error = error  ??  NSError(domain: "Redis", code: 1, userInfo: [NSLocalizedDescriptionKey:"Setting key failed"])
+            }
+            next()
         }
     } else {
+        Log.error("Parameters not found")
         response.error = NSError(domain: "Redis", code: 1, userInfo: [NSLocalizedDescriptionKey:"Parameters not found"])
         next()
     }
