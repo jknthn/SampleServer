@@ -70,12 +70,82 @@ class BasicAuthMiddleware: RouterMiddleware {
     }
 }
 
-
 // This route executes the echo middleware
 router.all(middleware: BasicAuthMiddleware())
 
 router.all("/static", middleware: StaticFileServer())
 
+//MARK: API /redis
+// This route accepts GET requests
+router.get("/redis/:key") { request, response, next in
+    response.setHeader("Content-Type", value: "application/json; charset=utf-8")
+    if let key = request.params["key"] {
+        redis.get(key) { (result: RedisString?, error: NSError?) in
+            if let r = result where error == nil {
+                do {
+                    try response.status(HttpStatusCode.OK).send(r.asString).end()
+                } catch {
+                    Log.error("Failed to send response \(error)")
+                }
+            } else {
+                response.error = error  ??  NSError(domain: "Redis", code: 1, userInfo: [NSLocalizedDescriptionKey:"Key not found"])
+            }
+            next()
+        }
+    } else {
+        response.error = NSError(domain: "Redis", code: 1, userInfo: [NSLocalizedDescriptionKey:"Parameters not found"])
+        next()
+    }
+}
+
+// This route accepts PUT requests
+router.put("/redis/:key") {request, response, next in
+    response.setHeader("Content-Type", value: "application/json; charset=utf-8")
+    if let key = request.params["key"],
+        let value = request.queryParams["value"] {
+        do {
+            try response.status(HttpStatusCode.OK).send("Hello World, from Kitura!").end()
+        } catch {
+            Log.error("Failed to send response \(error)")
+        }
+    } else {
+        response.error = NSError(domain: "Redis", code: 1, userInfo: [NSLocalizedDescriptionKey:"Parameters not found"])
+        next()
+    }
+}
+
+// This route accepts PATCH requests
+router.patch("/redis/:key") {request, response, next in
+    response.setHeader("Content-Type", value: "text/plain; charset=utf-8")
+    do {
+        redis.get("apple") { (result: RedisString?, error: NSError?) in
+            if let e = error {
+                print(e.localizedDescription)
+                exit(EXIT_FAILURE)
+            }
+            if let r = result {
+                print(r.asInteger) // asData, asString, asInteger, asDouble
+            } else {
+                print("Not Found")
+            }
+        }
+        try response.status(HttpStatusCode.OK).send("Got a PUT request").end()
+    } catch {
+        Log.error("Failed to send response \(error)")
+    }
+}
+
+// This route accepts DELETE requests
+router.delete("/redis/:key") {request, response, next in
+    response.setHeader("Content-Type", value: "text/plain; charset=utf-8")
+    do {
+        try response.status(HttpStatusCode.OK).send("Got a DELETE request").end()
+    } catch {
+        Log.error("Failed to send response \(error)")
+    }
+}
+
+//MARK: /hello
 router.get("/hello") { _, response, next in
     response.setHeader("Content-Type", value: "text/plain; charset=utf-8")
     do {
@@ -192,6 +262,7 @@ router.all { request, response, next in
     }
     next()
 }
+
 // Listen on port 8090
 let server = HttpServer.listen(8090, delegate: router)
 Server.run()
