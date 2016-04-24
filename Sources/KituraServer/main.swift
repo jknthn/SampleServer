@@ -43,7 +43,7 @@ let router = Router()
 Log.logger = HeliumLogger()
 
 // Redis setup
-let redisHost = "104.197.134.83"
+let redisHost = "10.240.0.9"
 let redisPort: Int32 = 6379
 let redis = Redis()
 redis.connect(redisHost, port: redisPort) {error in
