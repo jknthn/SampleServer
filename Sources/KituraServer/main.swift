@@ -153,35 +153,6 @@ router.get("/multi") { request, response, next in
     next()
 }
 
-// Support for Mustache implemented for OSX only yet
-#if !os(Linux)
-router.setDefaultTemplateEngine(MustacheTemplateEngine())
-    
-router.get("/trimmer") { _, response, next in
-    defer {
-        next()
-    }
-    do {
-        // the example from https://github.com/groue/GRMustache.swift/blob/master/README.md
-        var context: [String: Any] = [
-            "name": "Arthur",
-            "date": NSDate(),
-            "realDate": NSDate().addingTimeInterval(60*60*24*3),
-            "late": true
-        ]
-        
-        // Let template format dates with `{{format(...)}}`
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .mediumStyle
-        context["format"] = dateFormatter
-        
-        try response.render("document", context: context).end()
-    } catch {
-        Log.error("Failed to render template \(error)")
-    }
-}
-#endif
-
 // Handles any errors that get set
 router.error { request, response, next in
     response.setHeader("Content-Type", value: "text/plain; charset=utf-8")
