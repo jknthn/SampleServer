@@ -84,12 +84,14 @@ router.get("/redis/:key") { request, response, next in
         Log.debug("key=\(key)")
         redis.get(key) { (result: RedisString?, error: NSError?) in
             if let r = result where error == nil {
+                Log.debug("Found key")
                 do {
                     try response.status(HttpStatusCode.OK).send(r.asString).end()
                 } catch {
                     Log.error("Failed to send response \(error)")
                 }
             } else {
+                Log.debug("Key not found")
                 response.error = error  ??  NSError(domain: "Redis", code: 1, userInfo: [NSLocalizedDescriptionKey:"Key not found"])
             }
             next()
