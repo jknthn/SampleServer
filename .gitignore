@@ -2,3 +2,5 @@
 .vagrant
 Packages
 *.pkg
+KituraServer.xcodeproj/project.xcworkspace/xcuserdata
+KituraServer.xcodeproj/xcuserdata
