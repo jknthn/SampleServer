@@ -33,16 +33,24 @@ import CouchDB
 #endif
 
 import Foundation
-
 import KituraMustache
 
+// MARK: Setup
 // All Web apps need a router to define routes
 let router = Router()
 
-let redis = Redis()
-
 // Using an implementation for a Logger
 Log.logger = HeliumLogger()
+
+// Redis setup
+let redisHost = "104.197.134.83"
+let redisPort: Int32 = 6379
+let redis = Redis()
+redis.connect(redisHost, port: redisPort) {error in
+    if  let error = error {
+        Log.error("Failed to connect to Redis server at \(redisHost):\(redisPort). Error=\(error.localizedDescription)")
+    }
+}
 
 /**
  * RouterMiddleware can be used for intercepting requests and handling custom behavior
