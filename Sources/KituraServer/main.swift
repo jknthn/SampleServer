@@ -91,12 +91,13 @@ router.get("/redis/:key") { request, response, next in
                     Log.error("Failed to send response \(error)")
                 }
             } else {
-                Log.debug("Key not found")
+                Log.error("Key not found")
                 response.error = error  ??  NSError(domain: "Redis", code: 1, userInfo: [NSLocalizedDescriptionKey:"Key not found"])
             }
             next()
         }
     } else {
+        Log.error("Parameters not found")
         response.error = NSError(domain: "Redis", code: 1, userInfo: [NSLocalizedDescriptionKey:"Parameters not found"])
         next()
     }
