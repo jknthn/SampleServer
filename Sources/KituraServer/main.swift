@@ -78,8 +78,10 @@ router.all("/static", middleware: StaticFileServer())
 //MARK: API /redis
 // This route accepts GET requests
 router.get("/redis/:key") { request, response, next in
+    Log.debug("GET /redis/:key")
     response.setHeader("Content-Type", value: "application/json; charset=utf-8")
     if let key = request.params["key"] {
+        Log.debug("key=\(key)")
         redis.get(key) { (result: RedisString?, error: NSError?) in
             if let r = result where error == nil {
                 do {
