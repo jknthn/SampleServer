@@ -38,7 +38,7 @@ import KituraMustache
 // MARK: Setup
 
 // All Web apps need a router to define routes
-let router = Router()
+let router = Kitura.Router()
 
 /**
  * RouterMiddleware can be used for intercepting requests and handling custom behavior
@@ -67,6 +67,7 @@ Log.logger = HeliumLogger()
 let redis = Redis()
 
 setupRedisAPI()
+//setupMongoAPI(router)
 setupHelloAPI()
 defaultSetup()
 
