@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A0864411CCE3D5C00B23B90 /* redisExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A08643F1CCE3BA300B23B90 /* redisExample.swift */; };
+		7A0864431CCE3DBD00B23B90 /* helloExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0864421CCE3DBD00B23B90 /* helloExample.swift */; };
+		7A0864451CCE3FEB00B23B90 /* defaultExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0864441CCE3FEB00B23B90 /* defaultExample.swift */; };
 		7A09AD911CCCE8B400A26070 /* libLoggerAPI.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_LoggerAPI" /* libLoggerAPI.dylib */; };
 		7A09AD921CCCE8B400A26070 /* libSocket.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_Socket" /* libSocket.dylib */; };
 		7A09AD931CCCE8B400A26070 /* libKituraSys.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = "_____Product_KituraSys" /* libKituraSys.dylib */; };
@@ -520,6 +523,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A08643F1CCE3BA300B23B90 /* redisExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = redisExample.swift; sourceTree = "<group>"; };
+		7A0864421CCE3DBD00B23B90 /* helloExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = helloExample.swift; sourceTree = "<group>"; };
+		7A0864441CCE3FEB00B23B90 /* defaultExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = defaultExample.swift; sourceTree = "<group>"; };
 		__PBXFileRef_Package.swift /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = "/Users/jakubtomanik/Documents/Kitura/kitura-server/Package.swift"; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/BSON-1.2.7/Sources/ArrayDictionaryDocument.swift" /* ArrayDictionaryDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayDictionaryDocument.swift; sourceTree = "<group>"; };
 		"__PBXFileRef_Packages/BSON-1.2.7/Sources/Binary.swift" /* Binary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binary.swift; sourceTree = "<group>"; };
@@ -1456,6 +1462,9 @@
 			isa = PBXGroup;
 			children = (
 				__PBXFileRef_Sources/KituraServer/main.swift /* main.swift */,
+				7A08643F1CCE3BA300B23B90 /* redisExample.swift */,
+				7A0864421CCE3DBD00B23B90 /* helloExample.swift */,
+				7A0864441CCE3FEB00B23B90 /* defaultExample.swift */,
 			);
 			name = KituraServer;
 			path = Sources/KituraServer;
@@ -2698,7 +2707,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				7A0864451CCE3FEB00B23B90 /* defaultExample.swift in Sources */,
+				7A0864411CCE3D5C00B23B90 /* redisExample.swift in Sources */,
 				__src_cc_ref_Sources/KituraServer/main.swift /* main.swift in Sources */,
+				7A0864431CCE3DBD00B23B90 /* helloExample.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
