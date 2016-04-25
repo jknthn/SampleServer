@@ -114,7 +114,7 @@ func setupRedisAPI() {
     // This route accepts DELETE requests
     router.delete("/redis/:key") {request, response, next in
         Log.debug("DELETE /redis/:key")
-        response.setHeader("Content-Type", value: "application/json; charset=utf-8")
+        response.setHeader("Content-Type", value: "text/plain; charset=utf-8")
         if let key = request.params["key"] {
             Log.debug("key=\(key)")
             redis.del(key) { (length: Int?, error: NSError?) in
