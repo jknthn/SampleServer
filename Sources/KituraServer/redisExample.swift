@@ -57,7 +57,7 @@ func setupRedisAPI() {
                 if let r = result where error == nil {
                     Log.debug("Found value for key: \(r.asString)")
                     do {
-                        try response.status(HttpStatusCode.OK).send(r.asString).end()
+                        try response.status(.OK).send(r.asString).end()
                     } catch {
                         Log.error("Failed to send response \(error)")
                     }
@@ -65,7 +65,7 @@ func setupRedisAPI() {
                     Log.error("Key not found")
                     response.error = error  ??  NSError(domain: "Redis",
                                                         code: 1,
-                                                        userInfo: [NSLocalizedDescriptionKey:"Key not found"])
+                                                        userInfo: [NSLocalizedDescriptionKey: "Key not found"])
                 }
                 next()
             }
@@ -73,7 +73,7 @@ func setupRedisAPI() {
             Log.error("Parameters not found")
             response.error = NSError(domain: "Redis",
                                      code: 1,
-                                     userInfo: [NSLocalizedDescriptionKey:"Parameters not found"])
+                                     userInfo: [NSLocalizedDescriptionKey: "Parameters not found"])
             next()
         }
     }
@@ -90,7 +90,7 @@ func setupRedisAPI() {
                     Log.debug("Set value for a key")
                     do {
                         // logic goes here
-                        try response.status(HttpStatusCode.OK).send("\(wasSet)").end()
+                        try response.status(.OK).send("\(wasSet)").end()
                     } catch {
                         Log.error("Failed to send response \(error)")
                     }
@@ -121,19 +121,23 @@ func setupRedisAPI() {
                 if let l = length where error == nil {
                     Log.debug("Number of keys deleted: \(l)")
                     do {
-                        try response.status(HttpStatusCode.OK).send("\(l)").end()
+                        try response.status(.OK).send("\(l)").end()
                     } catch {
                         Log.error("Failed to send response \(error)")
                     }
                 } else {
                     Log.error("Key not found")
-                    response.error = error  ??  NSError(domain: "Redis", code: 1, userInfo: [NSLocalizedDescriptionKey:"Key not found"])
+                    response.error = error  ??  NSError(domain: "Redis",
+                                                        code: 1,
+                                                        userInfo: [NSLocalizedDescriptionKey: "Key not found"])
                 }
                 next()
             }
         } else {
             Log.error("Parameters not found")
-            response.error = NSError(domain: "Redis", code: 1, userInfo: [NSLocalizedDescriptionKey:"Parameters not found"])
+            response.error = NSError(domain: "Redis",
+                                     code: 1,
+                                     userInfo: [NSLocalizedDescriptionKey: "Parameters not found"])
             next()
         }
     }
