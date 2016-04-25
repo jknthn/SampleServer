@@ -63,11 +63,12 @@ struct Model {
     }
     
     func toJSON() -> JSON {
-        return JSON(["username": (self.username ?? ""),
-            "name": (self.name ?? ""),
-            "surname": (self.surname ?? ""),
-            "age": (self.age ?? 0)
-            ])
+        let dictionary = ["username": (self.username ?? ""),
+                          "name": (self.name ?? ""),
+                          "surname": (self.surname ?? ""),
+                          "age": (self.age ?? 0)
+        ]
+        return JSON(dictionary)
     }
     
     mutating func fromJSON(document: JSON) {
