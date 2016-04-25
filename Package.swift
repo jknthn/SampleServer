@@ -32,7 +32,7 @@ let package = Package(
         .Package(url: "https://github.com/IBM-Swift/Kitura-net.git", majorVersion: 0, minor: 8),
         .Package(url: "https://github.com/IBM-Swift/Kitura-redis.git", majorVersion: 0, minor: 8),
         .Package(url: "https://github.com/IBM-Swift/Kitura-CouchDB.git", majorVersion: 0, minor: 8),
-        .Package(url: "https://github.com/PlanTeam/MongoKitten.git", majorVersion: 0, minor: 5)
+        .Package(url: "https://github.com/PlanTeam/MongoKitten.git", majorVersion: 0, minor: 7)
     ],
     exclude: ["Makefile", "Kitura-Build"])
 
