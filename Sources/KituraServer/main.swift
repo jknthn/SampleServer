@@ -36,15 +36,39 @@ import Foundation
 import KituraMustache
 
 // MARK: Setup
+
 // All Web apps need a router to define routes
 let router = Router()
+
+/**
+ * RouterMiddleware can be used for intercepting requests and handling custom behavior
+ * such as authentication and other routing
+ */
+class BasicAuthMiddleware: RouterMiddleware {
+    func handle(request: RouterRequest, response: RouterResponse, next: () -> Void) {
+        
+        let authString = request.headers["Authorization"]
+        
+        Log.info("Authorization: \(authString)")
+        
+        // Check authorization string in database to approve the request if fail
+        // response.error = NSError(domain: "AuthFailure", code: 1, userInfo: [:])
+        
+        next()
+    }
+}
+
+// This route executes the echo middleware
+router.all(middleware: BasicAuthMiddleware())
 
 // Using an implementation for a Logger
 Log.logger = HeliumLogger()
 
-defaultSetup()
+let redis = Redis()
+
 setupRedisAPI()
 setupHelloAPI()
+defaultSetup()
 
 // Listen on port 8090
 let server = HttpServer.listen(8090, delegate: router)

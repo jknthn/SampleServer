@@ -41,7 +41,6 @@ func setupRedisAPI() {
         let redisHost = "10.240.0.9"
     #endif
     let redisPort: Int32 = 6379
-    let redis = Redis()
     redis.connect(redisHost, port: redisPort) {error in
         if  let error = error {
             Log.error("Failed to connect to Redis server at \(redisHost):\(redisPort). Error=\(error.localizedDescription)")

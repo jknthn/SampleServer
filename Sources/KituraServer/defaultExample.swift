@@ -34,27 +34,6 @@ import SwiftRedis
 
 func defaultSetup() {
     
-    /**
-     * RouterMiddleware can be used for intercepting requests and handling custom behavior
-     * such as authentication and other routing
-     */
-    class BasicAuthMiddleware: RouterMiddleware {
-        func handle(request: RouterRequest, response: RouterResponse, next: () -> Void) {
-            
-            let authString = request.headers["Authorization"]
-            
-            Log.info("Authorization: \(authString)")
-            
-            // Check authorization string in database to approve the request if fail
-            // response.error = NSError(domain: "AuthFailure", code: 1, userInfo: [:])
-            
-            next()
-        }
-    }
-    
-    // This route executes the echo middleware
-    router.all(middleware: BasicAuthMiddleware())
-    
     router.all("/static", middleware: StaticFileServer())
     
     // Error handling example
