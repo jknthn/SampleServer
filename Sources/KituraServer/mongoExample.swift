@@ -40,6 +40,7 @@ var workingCollection: MongoKitten.Collection {
     return userCollection
 }
 
+/*
 func setupMongoAPI(router: Kitura.Router) {
     
     // Redis setup
@@ -144,3 +145,4 @@ func setupMongoAPI(router: Kitura.Router) {
         }
     }
 }
+ */
