@@ -73,7 +73,3 @@ func setupHelloAPI() {
         }
     }
 }
-
-
-
-
