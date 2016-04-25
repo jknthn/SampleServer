@@ -67,7 +67,7 @@ Log.logger = HeliumLogger()
 let redis = Redis()
 
 setupRedisAPI()
-//setupMongoAPI(router)
+setupMongoAPI(router)
 setupHelloAPI()
 defaultSetup()
 
