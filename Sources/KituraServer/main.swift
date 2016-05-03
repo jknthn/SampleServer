@@ -64,8 +64,6 @@ router.all(middleware: BasicAuthMiddleware())
 // Using an implementation for a Logger
 Log.logger = HeliumLogger()
 
-let redis = Redis()
-
 setupRedisAPI()
 setupMongoAPI(router)
 setupHelloAPI()
