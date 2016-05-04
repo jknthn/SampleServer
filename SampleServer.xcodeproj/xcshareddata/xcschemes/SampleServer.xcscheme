@@ -17,7 +17,7 @@
                BlueprintIdentifier = "______Target_LoggerAPI"
                BuildableName = "libLoggerAPI.dylib"
                BlueprintName = "LoggerAPI"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "______Target_KituraSys"
                BuildableName = "libKituraSys.dylib"
                BlueprintName = "KituraSys"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -45,7 +45,21 @@
                BlueprintIdentifier = "______Target_Socket"
                BuildableName = "libSocket.dylib"
                BlueprintName = "Socket"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_CHttpParser"
+               BuildableName = "libCHttpParser.dylib"
+               BlueprintName = "CHttpParser"
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -59,7 +73,7 @@
                BlueprintIdentifier = "______Target_KituraNet"
                BuildableName = "libKituraNet.dylib"
                BlueprintName = "KituraNet"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -73,7 +87,7 @@
                BlueprintIdentifier = "______Target_SwiftyJSON"
                BuildableName = "libSwiftyJSON.dylib"
                BlueprintName = "SwiftyJSON"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -87,7 +101,7 @@
                BlueprintIdentifier = "______Target_KituraTemplateEngine"
                BuildableName = "libKitura-TemplateEngine.dylib"
                BlueprintName = "Kitura-TemplateEngine"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -101,7 +115,7 @@
                BlueprintIdentifier = "______Target_Kitura"
                BuildableName = "libKitura.dylib"
                BlueprintName = "Kitura"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -115,7 +129,7 @@
                BlueprintIdentifier = "______Target_HeliumLogger"
                BuildableName = "libHeliumLogger.dylib"
                BlueprintName = "HeliumLogger"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -126,38 +140,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Bridging"
-               BuildableName = "libBridging.dylib"
-               BlueprintName = "Bridging"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Mustache"
-               BuildableName = "libMustache.dylib"
-               BlueprintName = "Mustache"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_KituraMustache"
-               BuildableName = "libKituraMustache.dylib"
-               BlueprintName = "KituraMustache"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               BlueprintIdentifier = "______Target_CHiredis"
+               BuildableName = "libCHiredis.dylib"
+               BlueprintName = "CHiredis"
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -171,49 +157,7 @@
                BlueprintIdentifier = "______Target_SwiftRedis"
                BuildableName = "libSwiftRedis.dylib"
                BlueprintName = "SwiftRedis"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_CouchDB"
-               BuildableName = "libCouchDB.dylib"
-               BlueprintName = "CouchDB"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_CouchDBSample"
-               BuildableName = "CouchDBSample"
-               BlueprintName = "CouchDBSample"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_C7"
-               BuildableName = "libC7.dylib"
-               BlueprintName = "C7"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -227,7 +171,35 @@
                BlueprintIdentifier = "______Target_CryptoEssentials"
                BuildableName = "libCryptoEssentials.dylib"
                BlueprintName = "CryptoEssentials"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_CryptoEssentialsSwift2"
+               BuildableName = "libCryptoEssentialsSwift2.dylib"
+               BlueprintName = "CryptoEssentialsSwift2"
+               ReferencedContainer = "container:SampleServer.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_CryptoEssentialsSwift3"
+               BuildableName = "libCryptoEssentialsSwift3.dylib"
+               BlueprintName = "CryptoEssentialsSwift3"
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -241,7 +213,7 @@
                BlueprintIdentifier = "______Target_MD5"
                BuildableName = "libMD5.dylib"
                BlueprintName = "MD5"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -255,7 +227,7 @@
                BlueprintIdentifier = "______Target_HMAC"
                BuildableName = "libHMAC.dylib"
                BlueprintName = "HMAC"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -269,21 +241,7 @@
                BlueprintIdentifier = "______Target_PBKDF2"
                BuildableName = "libPBKDF2.dylib"
                BlueprintName = "PBKDF2"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_SHA1"
-               BuildableName = "libSHA1.dylib"
-               BlueprintName = "SHA1"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -297,7 +255,7 @@
                BlueprintIdentifier = "______Target_SCRAM"
                BuildableName = "libSCRAM.dylib"
                BlueprintName = "SCRAM"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -311,7 +269,21 @@
                BlueprintIdentifier = "______Target_BSON"
                BuildableName = "libBSON.dylib"
                BlueprintName = "BSON"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "______Target_SHA1"
+               BuildableName = "libSHA1.dylib"
+               BlueprintName = "SHA1"
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -325,21 +297,7 @@
                BlueprintIdentifier = "______Target_Strand"
                BuildableName = "libStrand.dylib"
                BlueprintName = "Strand"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_Hummingbird"
-               BuildableName = "libHummingbird.dylib"
-               BlueprintName = "Hummingbird"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -353,7 +311,7 @@
                BlueprintIdentifier = "______Target_MongoKitten"
                BuildableName = "libMongoKitten.dylib"
                BlueprintName = "MongoKitten"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -367,7 +325,7 @@
                BlueprintIdentifier = "______Target_KituraServer"
                BuildableName = "KituraServer"
                BlueprintName = "KituraServer"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
+               ReferencedContainer = "container:SampleServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -378,96 +336,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_KituraTestSuite"
-               BuildableName = "Kitura.testsuite.xctest"
-               BlueprintName = "Kitura.testsuite"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_netTestSuite"
-               BuildableName = "net.testsuite.xctest"
-               BlueprintName = "net.testsuite"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_MustacheTestSuite"
-               BuildableName = "Mustache.testsuite.xctest"
-               BlueprintName = "Mustache.testsuite"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_SwiftRedisTestSuite"
-               BuildableName = "SwiftRedis.testsuite.xctest"
-               BlueprintName = "SwiftRedis.testsuite"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_CouchDBTestSuite"
-               BuildableName = "CouchDB.testsuite.xctest"
-               BlueprintName = "CouchDB.testsuite"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_C7TestSuite"
-               BuildableName = "C7.testsuite.xctest"
-               BlueprintName = "C7.testsuite"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_BSONTestSuite"
-               BuildableName = "BSON.testsuite.xctest"
-               BlueprintName = "BSON.testsuite"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_HummingbirdTestSuite"
-               BuildableName = "Hummingbird.testsuite.xctest"
-               BlueprintName = "Hummingbird.testsuite"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "______Target_MongoKittenTestSuite"
-               BuildableName = "MongoKitten.testsuite.xctest"
-               BlueprintName = "MongoKitten.testsuite"
-               ReferencedContainer = "container:KituraServer.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <AdditionalOptions>
       </AdditionalOptions>
@@ -488,7 +356,7 @@
             BlueprintIdentifier = "______Target_LoggerAPI"
             BuildableName = "libLoggerAPI.dylib"
             BlueprintName = "LoggerAPI"
-            ReferencedContainer = "container:KituraServer.xcodeproj">
+            ReferencedContainer = "container:SampleServer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>

@@ -17,10 +17,10 @@
 import PackageDescription
 
 let package = Package(
-    name: "KituraServer",
+    name: "SampleServer",
     targets: [
         Target(
-            name: "KituraServer",
+            name: "SampleServer",
             dependencies: []
         )
     ],

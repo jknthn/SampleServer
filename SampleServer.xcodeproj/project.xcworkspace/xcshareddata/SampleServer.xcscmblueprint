@@ -1,0 +1,79 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "76D13DFEE438508B3847F517E9F2495FEF304607",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "F5C516C47506A9D397E80AC3A167806F3F811B4D" : 0,
+    "92AF87893551AD3F2DEE78BEF3E924B9C5659E09" : 0,
+    "000B17277859E4768F3F95539783DD07734FAE00" : 0,
+    "25E95323D0B6F897513B275CFAC8493931C6785F" : 0,
+    "287F3CCB1287376788CD8C8A6441419AFFC4A554" : 0,
+    "1A81AC7E588BE86E760603555BCE76FB0C611997" : 0,
+    "76D13DFEE438508B3847F517E9F2495FEF304607" : 0,
+    "85E996FB125657C20E42A299A76F925867A7A6E4" : 0,
+    "43C021D2F0E746BBB29CA4E06229F111196D4871" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "89EE88B1-AE8E-4248-80BC-3D426041390B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "F5C516C47506A9D397E80AC3A167806F3F811B4D" : "SampleServer\/Packages\/PBKDF2-0.5.2\/",
+    "92AF87893551AD3F2DEE78BEF3E924B9C5659E09" : "SampleServer\/Packages\/HeliumLogger-0.6.1\/",
+    "000B17277859E4768F3F95539783DD07734FAE00" : "SampleServer\/Packages\/MD5-0.5.2\/",
+    "25E95323D0B6F897513B275CFAC8493931C6785F" : "SampleServer\/Packages\/SCRAM-0.5.2\/",
+    "287F3CCB1287376788CD8C8A6441419AFFC4A554" : "SampleServer\/Packages\/HMAC-0.5.2\/",
+    "1A81AC7E588BE86E760603555BCE76FB0C611997" : "SampleServer\/Packages\/Kitura-TemplateEngine-0.9.0\/",
+    "76D13DFEE438508B3847F517E9F2495FEF304607" : "SampleServer\/",
+    "85E996FB125657C20E42A299A76F925867A7A6E4" : "SampleServer\/Packages\/LoggerAPI-0.5.1\/",
+    "43C021D2F0E746BBB29CA4E06229F111196D4871" : "SampleServer\/Packages\/Socket-0.5.2\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SampleServer",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SampleServer.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CryptoKitten\/MD5.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "000B17277859E4768F3F95539783DD07734FAE00"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/IBM-Swift\/Kitura-TemplateEngine.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1A81AC7E588BE86E760603555BCE76FB0C611997"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CryptoKitten\/SCRAM.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "25E95323D0B6F897513B275CFAC8493931C6785F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CryptoKitten\/HMAC.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "287F3CCB1287376788CD8C8A6441419AFFC4A554"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/IBM-Swift\/BlueSocket.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "43C021D2F0E746BBB29CA4E06229F111196D4871"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/swift-api\/SampleServer.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "76D13DFEE438508B3847F517E9F2495FEF304607"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/IBM-Swift\/LoggerAPI.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "85E996FB125657C20E42A299A76F925867A7A6E4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/IBM-Swift\/HeliumLogger.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "92AF87893551AD3F2DEE78BEF3E924B9C5659E09"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/CryptoKitten\/PBKDF2.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F5C516C47506A9D397E80AC3A167806F3F811B4D"
+    }
+  ]
+}
