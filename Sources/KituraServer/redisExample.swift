@@ -1,13 +1,10 @@
 import Foundation
-
-import KituraSys
-import KituraNet
 import Kitura
-
-import LoggerAPI
 import HeliumLogger
+import LoggerAPI
 
 import SwiftRedis
+import SwiftyJSON
 
 #if os(Linux)
     import Glibc
@@ -25,7 +22,7 @@ func setupRedisAPI() {
         let redisHost = "10.240.0.9"
     #endif
     let redisPort: Int32 = 6379
-    redis.connect(redisHost, port: redisPort) {error in
+    redis.connect(host: redisHost, port: redisPort) {error in
         if  let error = error {
             Log.error("Failed to connect to Redis server at \(redisHost):\(redisPort). Error=\(error.localizedDescription)")
         }

@@ -16,8 +16,13 @@
 
 // KituraSample shows examples for creating custom routes.
 import Foundation
+
+import KituraSys
+import KituraNet
 import Kitura
+
 import HeliumLogger
+import LoggerAPI
 
 import SwiftRedis
 import MongoKitten
@@ -28,6 +33,9 @@ import SwiftyJSON
 #endif
 
 // MARK: Setup
+
+// Using an implementation for a Logger
+Log.logger = HeliumLogger()
 
 // All Web apps need a router to define routes
 let router = Kitura.Router()
@@ -57,10 +65,10 @@ router.all(middleware: BasicAuthMiddleware())
 Log.logger = HeliumLogger()
 
 setupRedisAPI()
-setupMongoAPI(router)
+setupMongoAPI(router: router)
 setupHelloAPI()
 defaultSetup()
 
 // Listen on port 8090
-let server = HttpServer.listen(8090, delegate: router)
+let server = HttpServer.listen(port: 8090, delegate: router)
 Server.run()

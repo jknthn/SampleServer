@@ -1,13 +1,10 @@
 import Foundation
 
-import KituraSys
-import KituraNet
 import Kitura
+import KituraNet
 
-import LoggerAPI
 import HeliumLogger
-
-import SwiftRedis
+import LoggerAPI
 
 #if os(Linux)
     import Glibc
@@ -68,7 +65,7 @@ func defaultSetup() {
     }
     // A custom Not found handler
     router.all { request, response, next in
-        if  response.getStatusCode() == .NOT_FOUND  {
+        if  response.statusCode == .NOT_FOUND  {
             // Remove this wrapping if statement, if you want to handle requests to / as well
             if  request.originalUrl != "/"  &&  request.originalUrl != ""  {
                 do {

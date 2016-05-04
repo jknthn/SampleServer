@@ -1,13 +1,10 @@
 import Foundation
 
-import KituraSys
-import KituraNet
 import Kitura
+import KituraNet
 
-import LoggerAPI
 import HeliumLogger
-
-import SwiftRedis
+import LoggerAPI
 
 #if os(Linux)
     import Glibc
