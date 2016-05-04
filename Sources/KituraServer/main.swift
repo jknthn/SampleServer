@@ -15,6 +15,7 @@
  **/
 
 // KituraSample shows examples for creating custom routes.
+import Foundation
 import Kitura
 import HeliumLogger
 
@@ -25,9 +26,6 @@ import SwiftyJSON
 #if os(Linux)
     import Glibc
 #endif
-
-import Foundation
-import KituraMustache
 
 // MARK: Setup
 
