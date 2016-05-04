@@ -26,7 +26,6 @@ import HeliumLogger
 import SwiftRedis
 import MongoKitten
 import SwiftyJSON
-import CouchDB
 
 #if os(Linux)
     import Glibc
