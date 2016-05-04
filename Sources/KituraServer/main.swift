@@ -15,12 +15,7 @@
  **/
 
 // KituraSample shows examples for creating custom routes.
-
-import KituraSys
-import KituraNet
 import Kitura
-
-import LoggerAPI
 import HeliumLogger
 
 import SwiftRedis
