@@ -65,11 +65,13 @@ struct Model {
 
 func setupMongoAPI(router: Kitura.Router) {
     
-    // Redis setup
+    // MongoDB setup
     #if os(OSX)
+        // This will not work
+        // MongoDB external IP is currently disabled
         let mongoHost = "104.197.204.212"
     #else
-        let mongoHost = "10.240.0.8"
+        let mongoHost = "10.132.0.7"
     #endif
     let mongoPort: UInt16 = 27017
     do {

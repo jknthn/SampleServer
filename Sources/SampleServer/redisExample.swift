@@ -17,9 +17,11 @@ func setupRedisAPI() {
     
     // Redis setup
     #if os(OSX)
+        // This will not work
+        // Redis external IP is currently disabled
         let redisHost = "104.197.205.184"
     #else
-        let redisHost = "10.240.0.9"
+        let redisHost = "10.132.0.3"
     #endif
     let redisPort: Int32 = 6379
     redis.connect(host: redisHost, port: redisPort) {error in
