@@ -69,6 +69,6 @@ setupMongoAPI(router: router)
 setupHelloAPI()
 defaultSetup()
 
-// Listen on port 8090
-let server = HttpServer.listen(port: 8090, delegate: router)
+// Listen on port 80
+let server = HttpServer.listen(port: 80, delegate: router)
 Server.run()
