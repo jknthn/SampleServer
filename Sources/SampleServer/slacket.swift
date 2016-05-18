@@ -231,6 +231,8 @@ struct Slacket: AppType {
                             if let data = data,
                                 let answer = String(data: data, encoding: NSUTF8StringEncoding) {
                                 
+                                Log.info(answer)
+                                
                                 #if os(Linux)
                                     let splitted = answer.componentsSeparatedByString("&").map { $0.componentsSeparatedByString("=") }
                                 #else
