@@ -72,7 +72,7 @@ struct Slacket: AppType {
                     let headers = ["Content-Type": "application/json; charset=UTF8",
                                    "X-Accept": "application/json; charset=UTF8"];
                     #if os(Linux)
-                        let url = command.text.stringByTrimmingCharactersInSet(NSCharacterSet(charactersIn: " "))
+                        let url = command.text.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: " "))
                     #else
                         let url = command.text.trimmingCharacters(in: NSCharacterSet(charactersIn: " "))
                     #endif
@@ -166,7 +166,12 @@ struct Slacket: AppType {
                             if let data = data,
                                 let code = String(data: data, encoding: NSUTF8StringEncoding) {
                                 
-                                let requestToken = code.replacingOccurrences(of: "code=", with: "")
+                                #if os(Linux)
+                                    let requestToken = code.stringByReplacingOccurrencesOfString("code=", withString: "")
+                                #else
+                                    let requestToken = code.replacingOccurrences(of: "code=", with: "")
+                                #endif
+                                
                                 self.pocketRequestTokens[slackId] = requestToken
                                 let redirecTo = "https://getpocket.com/auth/authorize?request_token=\(requestToken)&redirect_uri=\(redirectURL)"
                                 Log.debug("Pocket request token =  \(requestToken)")
@@ -208,7 +213,7 @@ struct Slacket: AppType {
                     let data = postString.data(using: NSUTF8StringEncoding)
                 #endif
                 
-                if let data = postString.data(using: NSUTF8StringEncoding) {
+                if let data = data {
                     
                     HttpClient.post(resource: authStep2, headers: headers, data: data) { error, status, headers, data in
                         
@@ -224,7 +229,11 @@ struct Slacket: AppType {
                             if let data = data,
                                 let answer = String(data: data, encoding: NSUTF8StringEncoding) {
                                 
-                                let splitted = answer.components(separatedBy: "&").map { $0.components(separatedBy: "=") }
+                                #if os(Linux)
+                                    let splitted = answer.components(separatedBy: "&").map { $0.componentsSeparatedByString("=") }
+                                #else
+                                    let splitted = answer.components(separatedBy: "&").map { $0.components(separatedBy: "=") }
+                                #endif
                                 
                                 for component in splitted {
                                     if component.count == 2 {
