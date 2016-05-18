@@ -81,6 +81,8 @@ struct Slacket: AppType {
                     if let encodedUrl = encodedUrl {
                         
                         let jsonString = "{\"url\":\"\(encodedUrl)\",\"consumer_key\":\"\(self.pocketConsumerKey)\",\"access_token\":\"\(pocketAccessToken)\"}"
+                        Log.info(jsonString)
+                        
                         #if os(Linux)
                             let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
                         #else
@@ -241,23 +243,14 @@ struct Slacket: AppType {
                                 
                                 splitted.forEach { $0.forEach{ Log.info($0) } }
                                 
-                                for component in splitted {
-                                    if component.count == 2 {
-                                        let key = component[0]
-                                        let value = component[1]
-                                        
-                                        switch key {
-                                        case "access_token":
-                                            self.pocketAccessTokens[slackId] = value
-                                        case "username":
-                                            self.pocketUsernames[slackId] = value
-                                        default:
-                                            break
-                                        }
-                                    }
+                                if splitted.count == 2 {
+                                    self.pocketAccessTokens[slackId] = splitted[0][1]
+                                    self.pocketUsernames[slackId] = splitted[1][1]
                                 }
+                                
+                                
                                 let errorString = "error"
-                                let responseString = "access token = \(self.pocketAccessToken ?? errorString)\nusername = \(self.pocketUsername ?? errorString)"
+                                let responseString = "access token = \(self.pocketAccessTokens[slackId] ?? errorString)\nusername = \(self.pocketUsernames[slackId] ?? errorString)"
                                 
                                 response.setHeader("Content-Type", value: "text/plain; charset=utf-8")
                                 response.send(responseString)
