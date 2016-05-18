@@ -136,8 +136,6 @@ struct Slacket: AppType {
                 
                 if let data = postString.data(using: NSUTF8StringEncoding) {
                     
-                    response.setHeader("Content-Type", value: "text/plain; charset=utf-8")
-                    
                     HttpClient.post(resource: authStep1, headers: headers, data: data) { error, status, headers, data in
                         Log.debug("Received response from Pocket API")
                         
@@ -149,8 +147,21 @@ struct Slacket: AppType {
                             next()
                         } else {
                             
-                            response.send("success")
-                            next()
+                            if let data = data,
+                                let code = String(data: data, encoding: NSUTF8StringEncoding) {
+                                
+                                let requestToken = code.replacingOccurrences(of: "code=", with: "")
+                                self.pocketRequestTokens[slackId] = requestToken
+                                let redirecTo = "https://getpocket.com/auth/authorize?request_token=\(requestToken)&redirect_uri=\(redirectURL)"
+                                Log.debug("Pocket request token =  \(requestToken)")
+                                
+                                do {
+                                    Log.debug("Redirecting")
+                                    try response.redirect(redirecTo)
+                                }
+                                catch {}
+                                return
+                            }
                         }
                     }
                 }
@@ -224,6 +235,15 @@ struct Slacket: AppType {
                                          code: 1,
                                          userInfo: [NSLocalizedDescriptionKey: "Parameters not found"])
                 next()
+            }
+        }
+        
+        router.get("api/v1/*") { request, response, next in
+            do {
+                try response.end()
+            }
+            catch {
+                Log.error("Failed to send response \(error)")
             }
         }
     }
