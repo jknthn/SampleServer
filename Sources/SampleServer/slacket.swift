@@ -43,10 +43,16 @@ struct Slacket: AppType {
         }
     }
     
+    private var slackUserIds: [String] = []
+    private var pocketAccessTokens: [String: String] = [:]
+    private var pocketRequestTokens: [String: String] = [:]
+    private var pocketUsernames: [String: String] = [:]
+    
     let router: Router
     
     init(using router: Kitura.Router) {
         self.router = router
+        self.setupRoutes()
     }
     
     mutating func setupRoutes() {
@@ -60,7 +66,7 @@ struct Slacket: AppType {
                 Log.debug("Request from slack user = \(command.userId)")
                 Log.debug("To send link = \(command.text)")
                 
-                if let pocketAccessToken = self.pocketAccessToken {
+                if let pocketAccessToken = self.pocketAccessTokens[command.userId] {
                     
                     let addLink = SimpleHttpClient.HttpResourse(schema: "https", host: "getpocket.com/v3/add", port: "80")
                     let headers = ["Content-Type": "application/json; charset=UTF8",
@@ -186,13 +192,14 @@ struct Slacket: AppType {
         router.get("api/v1/pocket/authorized/:slack_id") { request, response, next in
             Log.debug("api/v1/pocket/auth/:slack_id")
             
-            if let slackId = request.params["slack_id"] {
+            if let slackId = request.params["slack_id"],
+            let pocketRequestToken = self.pocketRequestTokens[slackId] {
                 Log.debug("finishing authorization for slackId =  \(slackId)")
                 
                 let authStep2 = SimpleHttpClient.HttpResourse(schema: "https", host: "getpocket.com/v3/oauth/authorize", port: "80")
                 let headers = ["Content-Type": "application/x-www-form-urlencoded; charset=UTF8",
                                "X-Accept": "(x-www-form-urlencoded"];
-                let postString = "consumer_key=\(self.pocketConsumerKey)&code=\(self.pocketRequestToken)"
+                let postString = "consumer_key=\(self.pocketConsumerKey)&code=\(pocketRequestToken)"
                 
                 if let data = postString.data(using: NSUTF8StringEncoding) {
                     
@@ -219,9 +226,9 @@ struct Slacket: AppType {
                                         
                                         switch key {
                                         case "access_token":
-                                            self.pocketAccessToken = value
+                                            self.pocketAccessTokens[slackId] = value
                                         case "username":
-                                            self.pocketUsername = value
+                                            self.pocketUsernames[slackId] = value
                                         default:
                                             break
                                         }
