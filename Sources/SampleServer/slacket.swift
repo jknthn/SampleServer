@@ -72,14 +72,20 @@ struct Slacket: AppType {
                     let headers = ["Content-Type": "application/json; charset=UTF8",
                                    "X-Accept": "application/json; charset=UTF8"];
                     #if os(Linux)
-                        let url = command.text.stringByTrimmingCharactersInSet(in: NSCharacterSet(charactersIn: " "))
+                        let url = command.text.stringByTrimmingCharactersInSet(NSCharacterSet(charactersIn: " "))
                     #else
                         let url = command.text.trimmingCharacters(in: NSCharacterSet(charactersIn: " "))
                     #endif
                     if let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed()) {
                         
                         let jsonString = "{\"url\":\"\(encodedUrl)\",\"consumer_key\":\"\(self.pocketConsumerKey)\",\"access_token\":\"\(pocketAccessToken)\"}"
-                        if let data = jsonString.data(using: NSUTF8StringEncoding) {
+                        #if os(Linux)
+                            let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
+                        #else
+                            let data = jsonString.data(using: NSUTF8StringEncoding)
+                        #endif
+                        
+                        if let data = data {
                             
                             response.setHeader("Content-Type", value: "text/plain; charset=utf-8")
                             
@@ -138,7 +144,13 @@ struct Slacket: AppType {
                                "X-Accept": "(x-www-form-urlencoded"];
                 let postString = "consumer_key=\(self.pocketConsumerKey)&redirect_uri=\(redirectURL)"
                 
-                if let data = postString.data(using: NSUTF8StringEncoding) {
+                #if os(Linux)
+                    let data = postString.dataUsingEncoding(NSUTF8StringEncoding)
+                #else
+                    let data = postString.data(using: NSUTF8StringEncoding)
+                #endif
+                
+                if let data = data {
                     
                     HttpClient.post(resource: authStep1, headers: headers, data: data) { error, status, headers, data in
                         Log.debug("Received response from Pocket API")
@@ -189,6 +201,12 @@ struct Slacket: AppType {
                 let headers = ["Content-Type": "application/x-www-form-urlencoded; charset=UTF8",
                                "X-Accept": "(x-www-form-urlencoded"];
                 let postString = "consumer_key=\(self.pocketConsumerKey)&code=\(pocketRequestToken)"
+                
+                #if os(Linux)
+                    let data = postString.dataUsingEncoding(NSUTF8StringEncoding)
+                #else
+                    let data = postString.data(using: NSUTF8StringEncoding)
+                #endif
                 
                 if let data = postString.data(using: NSUTF8StringEncoding) {
                     
