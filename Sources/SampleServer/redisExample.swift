@@ -13,7 +13,7 @@ import SwiftyJSON
 //MARK: API /redis
 let redis = Redis()
 
-func setupRedisAPI() {
+func setupRedisAPI(router: Kitura.Router) {
     
     // Redis setup
     #if os(OSX)
