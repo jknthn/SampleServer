@@ -61,14 +61,18 @@ class BasicAuthMiddleware: RouterMiddleware {
 // This route executes the echo middleware
 router.all(middleware: BasicAuthMiddleware())
 
-// Using an implementation for a Logger
-Log.logger = HeliumLogger()
-
-setupRedisAPI()
-setupMongoAPI(router: router)
+//setupRedisAPI(router: router)
+//setupMongoAPI(router: router)
 setupHelloAPI()
 defaultSetup()
+let slacket = Slacket(using: router)
 
 // Listen on port 80
-let server = HttpServer.listen(port: 80, delegate: router)
+#if os(OSX)
+let serverPort = 8090
+#else
+let serverPort = 80
+#endif
+
+let server = HttpServer.listen(port: serverPort, delegate: router)
 Server.run()
