@@ -239,6 +239,8 @@ struct Slacket: AppType {
                                     let splitted = answer.components(separatedBy: "&").map { $0.components(separatedBy: "=") }
                                 #endif
                                 
+                                splitted.forEach { $0.forEach{ Log.info($0) } }
+                                
                                 for component in splitted {
                                     if component.count == 2 {
                                         let key = component[0]
