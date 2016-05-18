@@ -77,6 +77,8 @@ struct Slacket: AppType {
                         let jsonString = "{\"url\":\"\(encodedUrl)\",\"consumer_key\":\"\(self.pocketConsumerKey)\",\"access_token\":\"\(pocketAccessToken)\"}"
                         if let data = jsonString.data(using: NSUTF8StringEncoding) {
                             
+                            response.setHeader("Content-Type", value: "text/plain; charset=utf-8")
+                            
                             HttpClient.post(resource: addLink, headers: headers, data: data) { error, status, headers, data in
                                 
                                 if let _ = error{
@@ -87,34 +89,8 @@ struct Slacket: AppType {
                                                              userInfo: [NSLocalizedDescriptionKey: "Parameters not found"])
                                     next()
                                 } else {
-                                    
-                                    if let data = data,
-                                        let answer = String(data: data, encoding: NSUTF8StringEncoding) {
-                                        
-                                        let splitted = answer.components(separatedBy: "&").map { $0.components(separatedBy: "=") }
-                                        
-                                        for component in splitted {
-                                            if component.count == 2 {
-                                                let key = component[0]
-                                                let value = component[1]
-                                                
-                                                switch key {
-                                                case "access_token":
-                                                    self.pocketAccessToken = value
-                                                case "username":
-                                                    self.pocketUsername = value
-                                                default:
-                                                    break
-                                                }
-                                            }
-                                        }
-                                        let errorString = "error"
-                                        let responseString = "access token = \(self.pocketAccessToken ?? errorString)\nusername = \(self.pocketUsername ?? errorString)"
-                                        
-                                        response.setHeader("Content-Type", value: "text/plain; charset=utf-8")
-                                        response.send(responseString)
-                                        next()
-                                    }
+                                    response.send("success")
+                                    next()
                                 }
                             }
                         } else {
@@ -133,9 +109,7 @@ struct Slacket: AppType {
                     }
                 } else {
                     Log.error("Access token not found")
-                    response.error = NSError(domain: "Slacket",
-                                             code: 1,
-                                             userInfo: [NSLocalizedDescriptionKey: "Access token not found"])
+                    response.send("Please go to http://slacket.link/api/v1/pocket/auth/\(command.userId)")
                     next()
                 }
             } else {
