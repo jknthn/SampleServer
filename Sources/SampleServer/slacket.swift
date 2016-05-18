@@ -71,7 +71,11 @@ struct Slacket: AppType {
                     let addLink = SimpleHttpClient.HttpResourse(schema: "https", host: "getpocket.com/v3/add", port: "80")
                     let headers = ["Content-Type": "application/json; charset=UTF8",
                                    "X-Accept": "application/json; charset=UTF8"];
-                    let url = command.text.trimmingCharacters(in: NSCharacterSet(charactersIn: " "))
+                    #if os(Linux)
+                        let url = command.text.stringByTrimmingCharactersInSet(in: NSCharacterSet(charactersIn: " "))
+                    #else
+                        let url = command.text.trimmingCharacters(in: NSCharacterSet(charactersIn: " "))
+                    #endif
                     if let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed()) {
                         
                         let jsonString = "{\"url\":\"\(encodedUrl)\",\"consumer_key\":\"\(self.pocketConsumerKey)\",\"access_token\":\"\(pocketAccessToken)\"}"
