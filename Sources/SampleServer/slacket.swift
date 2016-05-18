@@ -73,10 +73,12 @@ struct Slacket: AppType {
                                    "X-Accept": "application/json; charset=UTF8"];
                     #if os(Linux)
                         let url = command.text.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: " "))
+                        let encodedUrl = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.urlQueryAllowed())
                     #else
                         let url = command.text.trimmingCharacters(in: NSCharacterSet(charactersIn: " "))
+                        let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed())
                     #endif
-                    if let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed()) {
+                    if let encodedUrl = encodedUrl {
                         
                         let jsonString = "{\"url\":\"\(encodedUrl)\",\"consumer_key\":\"\(self.pocketConsumerKey)\",\"access_token\":\"\(pocketAccessToken)\"}"
                         #if os(Linux)
@@ -230,7 +232,7 @@ struct Slacket: AppType {
                                 let answer = String(data: data, encoding: NSUTF8StringEncoding) {
                                 
                                 #if os(Linux)
-                                    let splitted = answer.components(separatedBy: "&").map { $0.componentsSeparatedByString("=") }
+                                    let splitted = answer.componentsSeparatedByString("&").map { $0.componentsSeparatedByString("=") }
                                 #else
                                     let splitted = answer.components(separatedBy: "&").map { $0.components(separatedBy: "=") }
                                 #endif
