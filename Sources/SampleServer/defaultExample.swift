@@ -63,19 +63,4 @@ func defaultSetup() {
             Log.error("Failed to send response \(error)")
         }
     }
-    // A custom Not found handler
-    router.all { request, response, next in
-        if  response.statusCode == .NOT_FOUND  {
-            // Remove this wrapping if statement, if you want to handle requests to / as well
-            if  request.originalUrl != "/"  &&  request.originalUrl != ""  {
-                do {
-                    try response.send("Route not found in Sample application!").end()
-                }
-                catch {
-                    Log.error("Failed to send response \(error)")
-                }
-            }
-        }
-        next()
-    }
 }
