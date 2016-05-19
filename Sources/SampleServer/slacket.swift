@@ -73,52 +73,44 @@ struct Slacket: AppType {
                                    "X-Accept": "application/json; charset=UTF8"];
                     #if os(Linux)
                         let url = command.text.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: " "))
-                        let encodedUrl = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+                        let encodedUrl = url //url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
                     #else
                         let url = command.text.trimmingCharacters(in: NSCharacterSet(charactersIn: " "))
-                        let encodedUrl = url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed())
+                        let encodedUrl = url //url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed())
                     #endif
-                    if let encodedUrl = encodedUrl {
+
+                    let jsonString = "{\"url\":\"\(encodedUrl)\",\"consumer_key\":\"\(self.pocketConsumerKey)\",\"access_token\":\"\(pocketAccessToken)\"}"
+                    Log.info(jsonString)
+                    
+                    #if os(Linux)
+                        let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
+                    #else
+                        let data = jsonString.data(using: NSUTF8StringEncoding)
+                    #endif
+                    
+                    if let data = data {
                         
-                        let jsonString = "{\"url\":\"\(encodedUrl)\",\"consumer_key\":\"\(self.pocketConsumerKey)\",\"access_token\":\"\(pocketAccessToken)\"}"
-                        Log.info(jsonString)
+                        response.setHeader("Content-Type", value: "text/plain; charset=utf-8")
                         
-                        #if os(Linux)
-                            let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
-                        #else
-                            let data = jsonString.data(using: NSUTF8StringEncoding)
-                        #endif
-                        
-                        if let data = data {
+                        HttpClient.post(resource: addLink, headers: headers, data: data) { error, status, headers, data in
                             
-                            response.setHeader("Content-Type", value: "text/plain; charset=utf-8")
-                            
-                            HttpClient.post(resource: addLink, headers: headers, data: data) { error, status, headers, data in
+                            if let _ = error{
                                 
-                                if let _ = error{
-                                    
-                                    Log.error("Pocket API returned error")
-                                    response.error = NSError(domain: "Slacket",
-                                                             code: status ?? 0,
-                                                             userInfo: [NSLocalizedDescriptionKey: "Parameters not found"])
-                                    next()
-                                } else {
-                                    response.send("success")
-                                    next()
-                                }
+                                Log.error("Pocket API returned error")
+                                response.error = NSError(domain: "Slacket",
+                                                         code: status ?? 0,
+                                                         userInfo: [NSLocalizedDescriptionKey: "Parameters not found"])
+                                next()
+                            } else {
+                                response.send("success")
+                                next()
                             }
-                        } else {
-                            Log.error("Encoding JSON has failed")
-                            response.error = NSError(domain: "Slacket",
-                                                     code: 1,
-                                                     userInfo: [NSLocalizedDescriptionKey: "Encoding JSON has failed"])
-                            next()
                         }
                     } else {
-                        Log.error("Encoding link has failed")
+                        Log.error("Encoding JSON has failed")
                         response.error = NSError(domain: "Slacket",
                                                  code: 1,
-                                                 userInfo: [NSLocalizedDescriptionKey: "Encoding link has failed"])
+                                                 userInfo: [NSLocalizedDescriptionKey: "Encoding JSON has failed"])
                         next()
                     }
                 } else {
