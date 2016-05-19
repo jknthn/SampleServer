@@ -79,7 +79,8 @@ struct Slacket: AppType {
                         let encodedUrl = url //url.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed())
                     #endif
 
-                    let jsonString = "{\"url\":\"\(encodedUrl)\",\"consumer_key\":\"\(self.pocketConsumerKey)\",\"access_token\":\"\(pocketAccessToken)\"}"
+                    let tags = "\(command.teamDomain),\(command.channelName)"
+                    let jsonString = "{\"url\":\"\(encodedUrl)\",\"tags\"=\"\(tags)\",\"consumer_key\":\"\(self.pocketConsumerKey)\",\"access_token\":\"\(pocketAccessToken)\"}"
                     Log.info(jsonString)
                     
                     #if os(Linux)
