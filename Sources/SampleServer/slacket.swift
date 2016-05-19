@@ -73,7 +73,7 @@ struct Slacket: AppType {
                                    "X-Accept": "application/json; charset=UTF8"];
                     #if os(Linux)
                         let url = command.text.stringByTrimmingCharactersInSet(NSCharacterSet(charactersInString: " "))
-                        let decodedUrl = url.stringByRemovingPercentEncoding()
+                        let decodedUrl = url.stringByRemovingPercentEncoding
                     #else
                         let url = command.text.trimmingCharacters(in: NSCharacterSet(charactersIn: " "))
                         let decodedUrl = url.removingPercentEncoding
