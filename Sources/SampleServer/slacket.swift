@@ -105,6 +105,7 @@ struct Slacket: AppType {
                                                              userInfo: [NSLocalizedDescriptionKey: "Parameters not found"])
                                     next()
                                 } else {
+                                    Log.error("Successfull call to Pocket API")
                                     response.send("success")
                                     next()
                                 }
