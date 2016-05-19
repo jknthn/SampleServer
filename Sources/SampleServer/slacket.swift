@@ -82,7 +82,7 @@ struct Slacket: AppType {
                     if let encodedUrl = decodedUrl {
                         
                         let tags = "\(command.teamDomain),\(command.channelName)"
-                        let jsonString = "{\"url\":\"\(encodedUrl)\",\"tags\"=\"\(tags)\",\"consumer_key\":\"\(self.pocketConsumerKey)\",\"access_token\":\"\(pocketAccessToken)\"}"
+                        let jsonString = "{\"url\":\"\(encodedUrl)\",\"tags\":\"\(tags)\",\"consumer_key\":\"\(self.pocketConsumerKey)\",\"access_token\":\"\(pocketAccessToken)\"}"
                         Log.info(jsonString)
                         
                         #if os(Linux)
